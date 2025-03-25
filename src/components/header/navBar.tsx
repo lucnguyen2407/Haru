@@ -2,8 +2,15 @@
 import { Box, Container, HStack, Link as ChakraLink } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { ColorModeButton } from '../ui/color-mode';
+import NavLink from '../common/NavLink';
 
 export default function NavBar() {
+  const navItems = [
+    { name: 'Projects', href: '/projects' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'CV', href: '/cv' },
+    { name: 'Contact', href: '/contact' },
+  ];
   return (
     <Box>
       <Container maxW="container.lg">
@@ -16,18 +23,9 @@ export default function NavBar() {
             Haru
           </ChakraLink>
           <HStack wordSpacing={4}>
-            <ChakraLink as={NextLink} href="/projects">
-              Projects
-            </ChakraLink>
-            <ChakraLink as={NextLink} href="/blog">
-              Blog
-            </ChakraLink>
-            <ChakraLink as={NextLink} href="/cv">
-              CV
-            </ChakraLink>
-            <ChakraLink as={NextLink} href="/contact">
-              Contact
-            </ChakraLink>
+            {navItems.map((item) => (
+              <NavLink key={item.href} href={item.href} name={item.name} />
+            ))}
             <ColorModeButton />
           </HStack>
         </HStack>
