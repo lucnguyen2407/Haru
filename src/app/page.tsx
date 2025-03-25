@@ -1,17 +1,14 @@
 'use client';
-import { Button, HStack } from '@chakra-ui/react';
+import MainBody from '@/components/body/mainBody';
+import Footer from '@/components/footer/footer';
+import NavBar from '@/components/header/navBar';
 
 export default function Home() {
   return (
-    <HStack>
-      <Button
-        onClick={() => {
-          console.log('hello');
-        }}
-      >
-        Click me
-      </Button>
-      <Button>Click me</Button>
-    </HStack>
+    <>
+      <NavBar />
+      <MainBody />
+      <Footer />
+    </>
   );
 }
