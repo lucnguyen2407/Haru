@@ -1,7 +1,7 @@
 'use client';
 import { Box, Container, HStack, Link as ChakraLink } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { ColorModeButton } from '../ui/color-mode';
+import { ColorModeButton, useColorModeValue } from '../ui/color-mode';
 import NavLink from '../common/NavLink';
 
 export default function NavBar() {
@@ -12,7 +12,11 @@ export default function NavBar() {
     { name: 'Contact', href: '/contact' },
   ];
   return (
-    <Box>
+    <Box
+      bg={useColorModeValue('#ffffff40', '#20202380')}
+      borderBottomWidth="1px"
+      borderBottomColor={useColorModeValue('neutral.400', 'neutralD.400')}
+    >
       <Container maxW="container.lg">
         <HStack justify="space-between" w="100%" h={16}>
           <ChakraLink
