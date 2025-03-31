@@ -35,7 +35,7 @@ export default function MainBody() {
             Nguyen Tien Luc
           </Heading>
           <Text fontSize="lg">
-            Digital Craftsman ( Artist / Developer / Designer )
+            Software Developer ( Sometimes a bodybuilder and gamer)
           </Text>
         </Box>
 
