@@ -31,18 +31,6 @@ const socialLinks = [
   },
 ];
 
-const FooterLink = ({ href, name }: { href: string; name: string }) => (
-  <Link href={href}>
-    <Text
-      fontSize="sm"
-      color={useColorModeValue('neutral.800', 'neutralD.800')}
-      _hover={{ color: useColorModeValue('neutral.1000', 'neutralD.1000') }}
-    >
-      {name}
-    </Text>
-  </Link>
-);
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -53,13 +41,11 @@ export default function Footer() {
         w="100%"
         display={{ base: 'none', md: 'flex' }}
       >
-        <FooterLink href="mailto:your.email@domain.com" name="Contact" />
-
         <Text
           fontSize="sm"
           color={useColorModeValue('neutral.800', 'neutralD.800')}
         >
-          © {currentYear} Your Name
+          © {currentYear} Nguyen Tien Luc
         </Text>
 
         <HStack>
@@ -85,8 +71,6 @@ export default function Footer() {
             </Link>
           ))}
         </HStack>
-
-        <FooterLink href="/privacy" name="Privacy" />
       </HStack>
     </Container>
   );
