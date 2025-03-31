@@ -12,15 +12,29 @@ export function Provider(props: ColorModeProviderProps) {
     setIsMounted(true);
   }, []);
 
-  // Prevent hydration mismatch by using simplified element tree during SSR
-  if (!isMounted) {
-    return <div style={{ visibility: 'hidden' }}>{props.children}</div>;
-  }
-
-  // Only render the full ChakraProvider and ColorModeProvider on the client
+  // During SSR and before hydration, render a simple placeholder
+  // After hydration, show the actual UI with all providers
   return (
-    <ChakraProvider value={defaultSystem}>
-      <ColorModeProvider {...props} />
-    </ChakraProvider>
+    <>
+      <style jsx global>{`
+        .hide-until-hydrated {
+          display: ${isMounted ? 'block' : 'none'};
+        }
+        .show-until-hydrated {
+          display: ${isMounted ? 'none' : 'block'};
+        }
+      `}</style>
+
+      <div className="show-until-hydrated" suppressHydrationWarning>
+        {/* Empty placeholder for server rendering */}
+        <div style={{ visibility: 'hidden', height: '100vh' }}></div>
+      </div>
+
+      <div className="hide-until-hydrated">
+        <ChakraProvider value={defaultSystem}>
+          <ColorModeProvider {...props} />
+        </ChakraProvider>
+      </div>
+    </>
   );
 }
