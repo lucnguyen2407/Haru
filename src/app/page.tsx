@@ -1,8 +1,7 @@
 import MainBody from '@/components/body/mainBody';
 import Footer from '@/components/footer/footer';
 import NavBar from '@/components/header/navBar';
-import { Box, Container, Spinner } from '@chakra-ui/react';
-import { Suspense } from 'react';
+import { Box, Container } from '@chakra-ui/react';
 
 export default function Home() {
   return (

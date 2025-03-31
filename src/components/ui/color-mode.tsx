@@ -7,9 +7,24 @@ import type { ThemeProviderProps } from 'next-themes';
 import * as React from 'react';
 import { LuMoon, LuSun } from 'react-icons/lu';
 
-export interface ColorModeProviderProps extends ThemeProviderProps {}
+// Use type alias instead of empty interface
+export type ColorModeProviderProps = ThemeProviderProps;
 
+// Client-side only ColorModeProvider to prevent hydration mismatch
 export function ColorModeProvider(props: ColorModeProviderProps) {
+  // Using useState/useEffect approach for client-side detection
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Return a simple wrapper during server rendering
+  if (!mounted) {
+    return <>{props.children}</>;
+  }
+
+  // Only use ThemeProvider on the client
   return (
     <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
   );
@@ -45,7 +60,8 @@ export function ColorModeIcon() {
   return colorMode === 'dark' ? <LuMoon /> : <LuSun />;
 }
 
-interface ColorModeButtonProps extends Omit<IconButtonProps, 'aria-label'> {}
+// Use type alias instead of empty interface
+export type ColorModeButtonProps = Omit<IconButtonProps, 'aria-label'>;
 
 export const ColorModeButton = React.forwardRef<
   HTMLButtonElement,
