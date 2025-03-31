@@ -19,7 +19,7 @@ import { RiMailLine } from 'react-icons/ri';
 export default function MainBody() {
   return (
     <Container
-      maxW="container.md"
+      maxW="container.sm"
       px={{ base: 6, md: 12, lg: 16 }} // Increased padding
     >
       <VStack width="full" gap={8} alignItems="stretch">

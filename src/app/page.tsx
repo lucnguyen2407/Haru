@@ -11,10 +11,11 @@ export default function Home() {
       </Box>
 
       <Container
-        maxW="container.lg"
+        maxW="container.md"
         flex="1"
         py={8}
         px={{ base: 6, md: 12, lg: 50 }}
+        mx="auto"
       >
         <MainBody />
       </Container>
