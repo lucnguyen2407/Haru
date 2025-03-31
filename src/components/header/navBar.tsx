@@ -28,7 +28,7 @@ export default function NavBar() {
             display="flex"
             alignItems="center"
           >
-            <Box mr={2}>🐾</Box>
+            <Box mr={2}>🐱</Box>
             Haru
           </ChakraLink>
           <HStack gap={4}>
