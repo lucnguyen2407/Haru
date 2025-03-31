@@ -46,7 +46,7 @@ export default function NavBar() {
             ))}
             <ChakraLink
               as={NextLink}
-              href="https://github.com/yourname"
+              href="https://github.com/lucnguyen2407"
               fontSize="sm"
               fontWeight="medium"
               _hover={{ textDecoration: 'none' }}
